@@ -8,21 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var tabSelect = 0
+    
     var body: some View {
         NavigationView{
-            TabView {
-                HomeView()
-                    .tabItem{Image(systemName: "house.fill")
-                    Text("Home")
-                }
+            TabView(selection: $tabSelect){
                 ListView()
                     .tabItem{Image(systemName: "list.dash")
                     Text("List")
-                }
+                    }
+                    .tag(0)
+                /*  これは、カテゴリー別に表示する段階まできたら追加する。
+                HomeView()
+                    .tabItem{Image(systemName: "house.fill")
+                    Text("Home")
+                    }
+                    .tag(1)
+                */
                 ProfileView()
                     .tabItem{Image(systemName: "person.fill")
                     Text("Profile")
-                }
+                    }
+                    .tag(2)
             }
             .padding()
         }
