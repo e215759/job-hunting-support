@@ -47,6 +47,7 @@ DerivedData/
 ### Xcode Patch ###
 ### プロジェクトファイルのパッケージ（ディレクトリ）の全体を除外し、必要なものだけ追加（除外からの除外）をしていきます
 *.xcodeproj/*
+*.xcworkspace
 ### プロジェクトの構成情報を格納するファイル
 !*.xcodeproj/project.pbxproj
 ### XcodeのプロジェクトのビルドSchemeを格納するファイル
@@ -62,3 +63,9 @@ DerivedData/
 ### 他のケースでも生成されるかもしれないが分からなかった
 ### https://developer.apple.com/library/archive/qa/qa1514/_index.html
 /*.gcno
+
+# Pod
+Pods
+Podfile.lock
+
+.DS_Store
