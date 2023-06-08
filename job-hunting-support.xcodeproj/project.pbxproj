@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A5D81B42A1F28540076EC44 /* appfunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D81B32A1F28540076EC44 /* appfunc.swift */; };
 		7D77452B2A1F16D40072E050 /* job_hunting_supportApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D77452A2A1F16D40072E050 /* job_hunting_supportApp.swift */; };
 		7D77452D2A1F16D40072E050 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D77452C2A1F16D40072E050 /* ContentView.swift */; };
 		7D77452F2A1F16D60072E050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D77452E2A1F16D60072E050 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A5D81B32A1F28540076EC44 /* appfunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appfunc.swift; sourceTree = "<group>"; };
 		7D7745272A1F16D40072E050 /* job-hunting-support.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "job-hunting-support.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D77452A2A1F16D40072E050 /* job_hunting_supportApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = job_hunting_supportApp.swift; sourceTree = "<group>"; };
 		7D77452C2A1F16D40072E050 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,7 +68,6 @@
 				7D77453E2A1F294D0072E050 /* FirstView.swift */,
 				7D77452C2A1F16D40072E050 /* ContentView.swift */,
 				7D77453A2A1F17200072E050 /* ListView.swift */,
-				7D7745382A1F17100072E050 /* HomeView.swift */,
 				7D77453C2A1F172B0072E050 /* ProfileView.swift */,
 				7D77452E2A1F16D60072E050 /* Assets.xcassets */,
 				7D7745302A1F16D60072E050 /* Preview Content */,
@@ -159,6 +160,7 @@
 				7D7886DF2A30C2260082674B /* UserDefaults+Extensions.swift in Sources */,
 				7D77452D2A1F16D40072E050 /* ContentView.swift in Sources */,
 				7D77452B2A1F16D40072E050 /* job_hunting_supportApp.swift in Sources */,
+				7A5D81B42A1F28540076EC44 /* appfunc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
