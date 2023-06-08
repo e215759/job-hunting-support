@@ -11,7 +11,11 @@ import SwiftUI
 struct job_hunting_supportApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if UserDefaults.standard.isFirstLaunch {
+                FirstView()
+            } else {
+                ContentView()
+            }
         }
     }
 }
