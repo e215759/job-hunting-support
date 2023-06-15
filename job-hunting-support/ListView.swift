@@ -16,6 +16,10 @@ struct CompanyInfo: Identifiable {
 
 struct ListView: View {
     
+    init(){
+            UITableView.appearance().backgroundColor = UIColor.white
+    }
+    
     let companys: [[CompanyInfo]] = [
         [.init(id: 0, name: "AU", date: "7/5"),
         .init(id: 1, name: "softbank", date: "7/15"),
@@ -31,7 +35,28 @@ struct ListView: View {
     ]
     
     var body: some View {
-        NavigationView {
+        ZStack{
+            Color.red
+                .ignoresSafeArea()
+            NavigationView {
+                List{
+                    ForEach(companys.indices, id: \.self) { section in
+                        Section(header: Text("携帯ショップ")
+                            .font(.system(size: 30))
+                            .fontWeight(.heavy)
+                        ) {
+                            ForEach(self.companys[section], id: \.id) { company in
+                                CompanyRow(company: company)
+                            }
+                        }
+                    }
+                }
+                .scrollContentBackground(Visibility.hidden)
+                .navigationTitle("List View")
+                .navigationBarTitleDisplayMode(.inline)
+            }
+        }
+        /*NavigationView {
             List{
                 ForEach(companys.indices, id: \.self) { section in
                     Section(header: Text("携帯ショップ")
@@ -47,6 +72,7 @@ struct ListView: View {
             .navigationTitle("List View")
             .navigationBarTitleDisplayMode(.inline)
         }
+         */
     }
 }
 
@@ -64,10 +90,10 @@ struct CompanyRow: View {
     }
 }
 
-/*
-struct ListWindow_Previews: PreviewProvider {
+
+struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListWindow()
+        ListView()
     }
 }
-*/
+

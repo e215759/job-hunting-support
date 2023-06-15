@@ -22,10 +22,8 @@ struct HomeView: View {
     }
 }
 
-/*
-struct HomeWindow_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeWindow()
+        HomeView()
     }
 }
-*/
