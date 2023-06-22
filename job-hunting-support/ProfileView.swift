@@ -12,7 +12,7 @@ struct ProfileView: View {
     @State var name: String = ""
     @State var userId = ""
     @State var year: Int = 0
-    @State var isShowAlert = false
+    @State var showAlert = false
     
     var body: some View {
         NavigationStack {
@@ -33,14 +33,31 @@ struct ProfileView: View {
                         .padding()
                 }
                 
-                Button("タップしてね") {
-                    self.isShowAlert = true          // ②タップされたら表示フラグをtrueにする
+                Button(action: {
+                    showAlert = true;
+                }){
+                    Text("ログアウト")
                 }
-                .alert(isPresented: $isShowAlert) {  // ③アラートの表示条件設定
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("本当にログアウトしますか？"),
+                        message: Text("ログアウトすると、次回アプリを開いていただいた時に再度ログインしてもらう必要があります。"),
+                        primaryButton: .destructive(Text("ログアウト")){
+                            @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
+                        },
+                        secondaryButton: .cancel(Text("キャンセル")){
+                            print("Cancelで閉じる")
+                        }
+                    )
+                }
+                /*
+                Button("ログアウト") {
+                    self.isShowAlert = true
+                }
+                .alert(isPresented: $ShowAlert) {  // ③アラートの表示条件設定
                     Alert(title: Text("本当にログアウトしますか？"),
                         message: Text("ログアウトすると、次回アプリを開いていただいた時に再度ログインしてもらう必要があります。"),primaryButton: .destructive(Text("ログアウト")),secondaryButton: .cancel(Text("キャンセル")))
-                        
                 }
+                 */
                 /*
                 Button{
                     //ここにログアウトボタンが押された時の処理

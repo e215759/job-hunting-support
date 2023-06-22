@@ -15,7 +15,7 @@ struct LoginView: View {
 
     var body: some View {
         VStack(spacing: 70){
-            Text("ログイン画面")
+            Text("ログイン")
                 .font(.largeTitle)
             
             VStack(spacing: 10){
@@ -42,12 +42,6 @@ struct LoginView: View {
                 }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-                /*
-                Text("パスワード")
-                SecureField("パスワード", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())  // 入力域のまわりを枠で囲む
-                    .padding()  // 余白を追加
-                 */
             }
             
             Button{

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//企業情報
 struct Company: Identifiable, Equatable{
     var id = UUID()
     var name: String = ""

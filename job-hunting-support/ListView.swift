@@ -7,93 +7,123 @@
 
 import SwiftUI
 
-//リスト要素の枠組み作成
-struct CompanyInfo: Identifiable {
-    let id: Int
-    let name: String
-    let date: String
-}
-
 struct ListView: View {
-    
-    init(){
-            UITableView.appearance().backgroundColor = UIColor.white
-    }
-    
-    let companys: [[CompanyInfo]] = [
-        [.init(id: 0, name: "AU", date: "7/5"),
-        .init(id: 1, name: "softbank", date: "7/15"),
-        .init(id: 2, name: "docomo", date: "7/25")],
-        
-        [.init(id: 0, name: "AU", date: "7/5"),
-        .init(id: 1, name: "softbank", date: "7/15"),
-        .init(id: 2, name: "docomo", date: "7/25")],
-        
-        [.init(id: 0, name: "AU", date: "7/5"),
-        .init(id: 1, name: "softbank", date: "7/15"),
-        .init(id: 2, name: "docomo", date: "7/25")],
+    @State var CompanyList: [Company] = [
+        Company(name: "A", industry: "X", employees: 1000),
+        Company(name: "B", industry: "Y", employees: 2000),
+        Company(name: "C", industry: "Z", employees: 4000)
     ]
-    
+
     var body: some View {
-        ZStack{
-            Color.red
-                .ignoresSafeArea()
-            NavigationView {
-                List{
-                    ForEach(companys.indices, id: \.self) { section in
-                        Section(header: Text("携帯ショップ")
-                            .font(.system(size: 30))
-                            .fontWeight(.heavy)
-                        ) {
-                            ForEach(self.companys[section], id: \.id) { company in
-                                CompanyRow(company: company)
-                            }
-                        }
+        NavigationView {
+            List {
+                ForEach(CompanyList) { company in
+                    NavigationLink(destination: CompanyDetailsView(company: binding(for: company))) {
+                        Text(company.name)
                     }
                 }
-                .scrollContentBackground(Visibility.hidden)
-                .navigationTitle("List View")
-                .navigationBarTitleDisplayMode(.inline)
+                .onDelete(perform: deletecompany)
             }
-        }
-        /*NavigationView {
-            List{
-                ForEach(companys.indices, id: \.self) { section in
-                    Section(header: Text("携帯ショップ")
-                        .font(.system(size: 30))
-                        .fontWeight(.heavy)
-                    ) {
-                        ForEach(self.companys[section], id: \.id) { company in
-                            CompanyRow(company: company)
-                        }
+            .navigationTitle("企業リスト")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: AddCompanyView(companyList: $CompanyList)) {
+                        Image(systemName: "plus")
                     }
                 }
             }
-            .navigationTitle("List View")
-            .navigationBarTitleDisplayMode(.inline)
         }
-         */
+    }
+    
+    private func binding(for company: Company) -> Binding<Company> {
+        guard let companyIndex = CompanyList.firstIndex(of: company) else {
+            fatalError("Person not found")
+        }
+        return $CompanyList[companyIndex]
+    }
+    
+    private func deletecompany(at offsets: IndexSet) {
+            CompanyList.remove(atOffsets: offsets)
     }
 }
 
-struct CompanyRow: View {
-    let company: CompanyInfo
+struct CompanyDetailsView: View {
+    @Binding var company: Company
+
+    var body: some View {
+        VStack {
+            Text("企業名: \(company.name)").font(.largeTitle).bold()
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text("業種: \(company.industry)").font(.title3)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text("従業員数: \(company.employees)").font(.title3)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            NavigationLink(destination: EditCompanyView(company: $company)) {
+                Text("Edit")
+            }
+        }
+        .navigationTitle("詳細情報")
+    }
+}
+
+struct AddCompanyView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    @Binding var companyList: [Company]
+    
+    @State var newCompanyName = ""
+    @State var newCompanyIndustry = ""
+    @State var newCompanyEmployees = 0
     
     var body: some View {
-        HStack {
-            Text(company.name)
-                .font(.headline)
-            Text(company.date)
-                .font(.headline)
-                .padding(.leading, 20)
+        Form {
+            TextField("Name", text:$newCompanyName)
+            TextField("Industry", text:$newCompanyIndustry)
+            TextField("Employees Number", value:$newCompanyEmployees, format: .number)
         }
+        .navigationTitle("Add Company")
+        .navigationBarItems(trailing: Button("Save") {
+            
+            companyList.append(Company(name: newCompanyName, industry: newCompanyIndustry, employees: newCompanyEmployees))
+            
+            newCompanyName = ""
+            newCompanyIndustry = ""
+            newCompanyEmployees = 0
+            presentationMode.wrappedValue.dismiss()
+        })
     }
 }
 
+struct EditCompanyView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var company: Company
+    @State private var editedCompany: Company
+
+    init(company: Binding<Company>) {
+        _company = company
+        _editedCompany = State(initialValue: company.wrappedValue)
+    }
+
+    var body: some View {
+        Form {
+            TextField("Name", text: $editedCompany.name)
+            TextField("Occupation", text: $editedCompany.industry)
+            TextField("Employees Number", value:$editedCompany.employees, format: .number)
+        }
+        .navigationTitle("Edit Company")
+        .navigationBarItems(trailing: Button("Save") {
+            company = editedCompany // 変更を反映させる
+            presentationMode.wrappedValue.dismiss()
+        })
+    }
+}
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView()
     }
 }
-
