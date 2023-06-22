@@ -22,5 +22,3 @@ struct Company: Identifiable, Equatable{
         self.employees = employees
     }
 }
-
-

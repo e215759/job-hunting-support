@@ -15,33 +15,62 @@ import SwiftUI
 //}
 
 struct ListView: View {
-    @State var CompanyList: [Company] = [
-        Company(name: "A", industry: "X", employees: 1000),
-        Company(name: "B", industry: "Y", employees: 2000),
-        Company(name: "C", industry: "Z", employees: 4000)
+    
+    init(){
+            UITableView.appearance().backgroundColor = UIColor.white
+    }
+    
+    let companys: [[CompanyInfo]] = [
+        [.init(id: 0, name: "AU", date: "7/5"),
+        .init(id: 1, name: "softbank", date: "7/15"),
+        .init(id: 2, name: "docomo", date: "7/25")],
+        
+        [.init(id: 0, name: "AU", date: "7/5"),
+        .init(id: 1, name: "softbank", date: "7/15"),
+        .init(id: 2, name: "docomo", date: "7/25")],
+        
+        [.init(id: 0, name: "AU", date: "7/5"),
+        .init(id: 1, name: "softbank", date: "7/15"),
+        .init(id: 2, name: "docomo", date: "7/25")],
     ]
 
     var body: some View {
-        
+        ZStack{
+            Color.red
+                .ignoresSafeArea()
             NavigationView {
-                List {
-                    ForEach(CompanyList) { company in
-                        NavigationLink(destination: CompanyDetailsView(company: binding(for: company))) {
-                            Text(company.name)
-                        }
-                    }
-                    .onDelete(perform: deletecompany)
-                }
-                .navigationTitle("Top")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: AddCompanyView(companyList: $CompanyList)) {
-                            Image(systemName: "plus")
+                List{
+                    ForEach(companys.indices, id: \.self) { section in
+                        Section(header: Text("携帯ショップ")
+                            .font(.system(size: 30))
+                            .fontWeight(.heavy)
+                        ) {
+                            ForEach(self.companys[section], id: \.id) { company in
+                                CompanyRow(company: company)
+                            }
                         }
                     }
                 }
+                .scrollContentBackground(Visibility.hidden)
+                .navigationTitle("List View")
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
+    
+    /*
+        NavigationView {
+          List{
+            ForEach(companys.indices, id: \.self) { section in 
+              Section(header: Text("携帯ショップ").font(.system(size: 30)).fontWeight(.heavy)
+            ) {
+              ForEach(self.companys[section], id: \.id) { company in
+                CompanyRow(company: company)
+              }
+            }
+          }
+        }
+    }
+    */
     
     private func binding(for company: Company) -> Binding<Company> {
         guard let companyIndex = CompanyList.firstIndex(of: company) else {
@@ -53,6 +82,7 @@ struct ListView: View {
     private func deletecompany(at offsets: IndexSet) {
         
             CompanyList.remove(atOffsets: offsets)
+
     }
 
 }
@@ -126,10 +156,10 @@ struct EditCompanyView: View {
     }
 }
 
-/*
-struct ListWindow_Previews: PreviewProvider {
+
+struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListWindow()
+        ListView()
     }
 }
-*/
+
