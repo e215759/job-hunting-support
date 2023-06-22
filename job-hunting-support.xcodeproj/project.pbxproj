@@ -25,6 +25,13 @@
 /* Begin PBXFileReference section */
 		637129E644743B892EC408B7 /* Pods-job-hunting-support.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-job-hunting-support.debug.xcconfig"; path = "Target Support Files/Pods-job-hunting-support/Pods-job-hunting-support.debug.xcconfig"; sourceTree = "<group>"; };
 		7617F7910102BD848FEC6BEE /* Pods_job_hunting_support.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_job_hunting_support.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D77453F2A1F294D0072E050 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7D7886DF2A30C2260082674B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7FD82A69B0241F56C4D4F5CA /* Pods_job_hunting_support.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5C29E097F7E14174E7FC3A /* Pods_job_hunting_support.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3C16C682DC331BB8BDE4A671 /* Pods-job-hunting-support.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-job-hunting-support.debug.xcconfig"; path = "Target Support Files/Pods-job-hunting-support/Pods-job-hunting-support.debug.xcconfig"; sourceTree = "<group>"; };
 		7D7745272A1F16D40072E050 /* job-hunting-support.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "job-hunting-support.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D77452A2A1F16D40072E050 /* job_hunting_supportApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = job_hunting_supportApp.swift; sourceTree = "<group>"; };
 		7D77452C2A1F16D40072E050 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,6 +44,8 @@
 		7D7886ED2A3AC4D40082674B /* appfunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appfunc.swift; sourceTree = "<group>"; };
 		7D7886EF2A3ACA540082674B /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		7FB3EDDFFA79A3933EFDC00E /* Pods-job-hunting-support.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-job-hunting-support.release.xcconfig"; path = "Target Support Files/Pods-job-hunting-support/Pods-job-hunting-support.release.xcconfig"; sourceTree = "<group>"; };
+		BF5C29E097F7E14174E7FC3A /* Pods_job_hunting_support.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_job_hunting_support.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1B13E958485926AD8D47A89 /* Pods-job-hunting-support.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-job-hunting-support.release.xcconfig"; path = "Target Support Files/Pods-job-hunting-support/Pods-job-hunting-support.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +249,10 @@
 				7D7886F02A3ACA540082674B /* CreateAccountView.swift in Sources */,
 				7D7886DF2A30C2260082674B /* (null) in Sources */,
 				7D7886EE2A3AC4D40082674B /* appfunc.swift in Sources */,
+				7D77453F2A1F294D0072E050 /* BuildFile in Sources */,
+				7D7745392A1F17100072E050 /* HomeView.swift in Sources */,
+				7D77453D2A1F172B0072E050 /* ProfileView.swift in Sources */,
+				7D7886DF2A30C2260082674B /* BuildFile in Sources */,
 				7D77452D2A1F16D40072E050 /* ContentView.swift in Sources */,
 				7D7886EC2A3AC2DC0082674B /* LoginView.swift in Sources */,
 				7D77452B2A1F16D40072E050 /* job_hunting_supportApp.swift in Sources */,
